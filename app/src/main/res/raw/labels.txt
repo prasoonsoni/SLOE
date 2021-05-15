@@ -1,0 +1,5 @@
+0 Attentive
+1 Unattentive
+2 Confused
+3 Depressed
+4 Cheerful
