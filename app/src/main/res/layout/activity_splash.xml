@@ -23,7 +23,32 @@
         app:lottie_fileName="splash.json"
         app:lottie_loop="true" />
 
-    <TextView
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/introImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:alpha="0"
+        android:src="@drawable/icongif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- <ImageView
+        android:id="@+id/introImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:alpha="0"
+        android:translationY="-2000px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/iconwhite" /> -->
+
+    <!-- <TextView
         android:id="@+id/introText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -33,12 +58,12 @@
         android:alpha="0"
         android:fontFamily="@font/pacifico"
         android:gravity="center"
-        android:text="Sloe"
+        android:text="SLOE"
         android:textColor="@color/text_color"
         android:textSize="70sp"
         android:translationY="-2000px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" /> -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
