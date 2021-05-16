@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1045698044750",
+    "firebase_url": "https://sloe-c2ffa-default-rtdb.firebaseio.com",
+    "project_id": "sloe-c2ffa",
+    "storage_bucket": "sloe-c2ffa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045698044750:android:90f23da46aba4c1362341f",
+        "android_client_info": {
+          "package_name": "com.blunderbois.sloe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1045698044750-bfgpcaocta7dhajm1s1l5k4281912ihi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6_9OyaY_FtOZe6jj7t97EhFO6LFVVOlU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1045698044750-bfgpcaocta7dhajm1s1l5k4281912ihi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045698044750:android:faf316fae09654b662341f",
+        "android_client_info": {
+          "package_name": "com.prasoonsoni.supervisedlearninginonlineeducation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1045698044750-bfgpcaocta7dhajm1s1l5k4281912ihi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6_9OyaY_FtOZe6jj7t97EhFO6LFVVOlU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1045698044750-bfgpcaocta7dhajm1s1l5k4281912ihi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
