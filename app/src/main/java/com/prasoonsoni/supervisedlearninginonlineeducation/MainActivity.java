@@ -72,8 +72,7 @@ public class MainActivity extends AppCompatActivity {
     private LottieAnimationView loading;
     private Interpreter interpreter;
     static final int REQUEST_TAKE_PHOTO = 1;
-    private static final int CAMERA_PERMISSION_CODE = 100;
-    private static final int STORAGE_PERMISSION_CODE = 101;
+    private static final int CAMERA_PERMISSION_CODE = 100, STORAGE_PERMISSION_CODE = 101;
     String mCurrentPhotoPath;
     int size, class1, class2, class3, class4, class5;
 
@@ -81,41 +80,42 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mAuth = FirebaseAuth.getInstance();
+        loading = findViewById(R.id.loading);
         TextView nameText = findViewById(R.id.nameTextView);
         TextView schoolText = findViewById(R.id.schoolTextView);
-        loading = findViewById(R.id.loading);
+        FloatingActionButton logout = findViewById(R.id.logout);
 
-        ProgressDialog progress = new ProgressDialog(this);
-        progress.setMessage("Setting up for first time use");
-        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progress.setIndeterminate(true);
-        progress.setCancelable(false);
-        progress.show();
+        if(mAuth.getCurrentUser() != null) {
 
-        CustomModelDownloadConditions conditions = new CustomModelDownloadConditions.Builder()
-                .build();
-        FirebaseModelDownloader.getInstance()
-                .getModel("DetectionModel", DownloadType.LOCAL_MODEL, conditions)
-                .addOnSuccessListener(new OnSuccessListener<CustomModel>() {
-                    @Override
-                    public void onSuccess(CustomModel model) {
+            ProgressDialog progress = new ProgressDialog(this);
+            progress.setMessage("Setting up for first time use");
+            progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progress.setIndeterminate(true);
+            progress.setCancelable(false);
+            progress.show();
+
+            logout.setOnClickListener(v -> {
+                mAuth.signOut();
+                Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                finish();
+            });
+
+            CustomModelDownloadConditions conditions = new CustomModelDownloadConditions.Builder()
+                    .build();
+            FirebaseModelDownloader.getInstance()
+                    .getModel("DetectionModel", DownloadType.LOCAL_MODEL, conditions)
+                    .addOnSuccessListener(model -> {
                         progress.dismiss();
-                        // Download complete. Depending on your app, you could enable
-                        // the ML feature, or switch from the local model to the remote
-                        // model, etc.
                         File modelFile = model.getFile();
                         if (modelFile != null) {
                             interpreter = new Interpreter(modelFile);
                         }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
+                    }).addOnFailureListener(e -> Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show());
 
-        mAuth = FirebaseAuth.getInstance();
+        }
+
         RecyclerView moodRecyclerView = findViewById(R.id.moodRecyclerView);
         MoodAdapter moodAdapter = new MoodAdapter(moodList,this);
         GridLayoutManager layoutManager = new GridLayoutManager(this,5);
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
+                    Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
 
@@ -171,14 +171,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         FloatingActionButton fab = findViewById(R.id.floatingActionButton);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                    requestPermissions(new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_CODE);
-                } else {
-                    dispatchTakePictureIntent();
-                }
+        fab.setOnClickListener(v -> {
+            if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_CODE);
+            } else {
+                dispatchTakePictureIntent();
             }
         });
     }
