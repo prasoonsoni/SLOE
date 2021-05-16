@@ -43,4 +43,4 @@ The app is currently aimed only for students, but we aim to use data of all the 
 7. <img src=https://cdn.iconscout.com/icon/free/png-512/heroku-5-569467.png width="32" height="32"> Heroku
 
 ### <img src="https://freeiconshop.com/wp-content/uploads/edd/code-flat.png" width="32" height="32"> APKs
-The project APK can be downloaded from [here](https://drive.google.com/file/d/1df_cfmDdxT9S-xGAQfVq-Gsx2V0Ht-Jd/view?usp=sharing).
+The project APK can be downloaded from [here](https://drive.google.com/drive/folders/1rxymNwMUUjd5hsnT7Pt_AyPrFKuqkH7_?usp=sharing).
