@@ -47,33 +47,33 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MyViewHolder> 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-       MoodModel model = list.get(position);
-       holder.date.setText(model.getDate());
+        MoodModel model = list.get(position);
+        holder.date.setText(model.getDate());
         String emoji = null;
         String color = null;
-       if(model.getOverall().equals("Attentive")){
-           holder.moodCard.setCardBackgroundColor(Color.parseColor("#A1ECBF"));
-           color = "#A1ECBF";
-           emoji = "\uD83D\uDE42";
-       } else if (model.getOverall().equals("Depressed")){
-           holder.moodCard.setCardBackgroundColor(Color.parseColor("#ff726f"));
-           emoji = "\uD83D\uDE1E";
-           color = "#ff726f";
-       } else if(model.getOverall().equals("Cheerful")){
-           holder.moodCard.setCardBackgroundColor(Color.parseColor("#fea82f"));
-           emoji = "\uD83D\uDE00";
-           color = "#fea82f";
-       } else if(model.getOverall().equals("Unattentive")){
-           holder.moodCard.setCardBackgroundColor(Color.parseColor("#958ce8"));
-           emoji = "\uD83D\uDE44";
-           color = "#958ce8";
-       } else if(model.getOverall().equals("Confused")){
-           holder.moodCard.setCardBackgroundColor(Color.parseColor("#fdd5b0"));
-           emoji = "\uD83D\uDE15";
-           color = "#fdd5b0";
-       } else {
-           holder.moodCard.setCardBackgroundColor(Color.parseColor("#dbdbe5"));
-       }
+        if(model.getOverall().equals("Attentive")){
+          holder.moodCard.setCardBackgroundColor(Color.parseColor("#A1ECBF"));
+          color = "#A1ECBF";
+          emoji = "\uD83D\uDE42";
+        } else if (model.getOverall().equals("Depressed")){
+            holder.moodCard.setCardBackgroundColor(Color.parseColor("#ff726f"));
+            emoji = "\uD83D\uDE1E";
+            color = "#ff726f";
+        } else if(model.getOverall().equals("Cheerful")){
+            holder.moodCard.setCardBackgroundColor(Color.parseColor("#fea82f"));
+            emoji = "\uD83D\uDE00";
+            color = "#fea82f";
+        } else if(model.getOverall().equals("Unattentive")){
+            holder.moodCard.setCardBackgroundColor(Color.parseColor("#958ce8"));
+            emoji = "\uD83D\uDE44";
+            color = "#958ce8";
+        } else if(model.getOverall().equals("Confused")){
+            holder.moodCard.setCardBackgroundColor(Color.parseColor("#fdd5b0"));
+            emoji = "\uD83D\uDE15";
+            color = "#fdd5b0";
+        } else {
+            holder.moodCard.setCardBackgroundColor(Color.parseColor("#dbdbe5"));
+        }
 
         LocalDate currentDate = LocalDate.now();
         int currentDay = currentDate.getDayOfMonth();

@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.blunderbois.sloe.R;
+import com.prasoonsoni.supervisedlearninginonlineeducation.R;
 
 import java.util.ArrayList;
 import java.util.Map;

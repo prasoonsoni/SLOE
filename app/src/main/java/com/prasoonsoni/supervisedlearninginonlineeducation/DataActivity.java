@@ -4,20 +4,17 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.prasoonsoni.supervisedlearninginonlineeducation.adapters.ClassAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.prasoonsoni.supervisedlearninginonlineeducation.adapters.ClassAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,18 +55,15 @@ public class DataActivity extends AppCompatActivity {
         classList.clear();
         DocumentReference documentReference = FirebaseFirestore.getInstance()
                 .collection(FirebaseAuth.getInstance().getCurrentUser().getUid()).document(Integer.toString(position + 1));
-        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()){
-                    DocumentSnapshot documentSnapshot = task.getResult();
-                    if (documentSnapshot.exists()){
-                        for (int i = 1; i <= documentSnapshot.getData().size(); i++){
-                            HashMap<String, String> hashMap = (HashMap<String, String>) documentSnapshot.getData().get(Integer.toString(i));
-                            classList.add(hashMap);
-                        }
-                        classAdapter.notifyDataSetChanged();
+        documentReference.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+                DocumentSnapshot documentSnapshot = task.getResult();
+                if (documentSnapshot.exists()){
+                    for (int i = 1; i <= documentSnapshot.getData().size(); i++){
+                        HashMap<String, String> hashMap = (HashMap<String, String>) documentSnapshot.getData().get(Integer.toString(i));
+                        classList.add(hashMap);
                     }
+                    classAdapter.notifyDataSetChanged();
                 }
             }
         });

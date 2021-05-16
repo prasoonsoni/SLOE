@@ -18,29 +18,21 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private ImageView top, bottom;
-    private TextView loginText, sloganText;
-    private TextInputLayout emailLayout, passwordLayout;
-    private EditText emailText, passwordText;
-    private Button loginButton;
-    private FirebaseAuth mAuth;
-    private ProgressDialog pd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mAuth = FirebaseAuth.getInstance();
-
-        top = findViewById(R.id.topImage);
-        bottom = findViewById(R.id.bottomImage);
-        loginText = findViewById(R.id.loginText);
-        sloganText = findViewById(R.id.sloganText);
-        emailLayout = findViewById(R.id.emailLayout);
-        passwordLayout = findViewById(R.id.passwordLayout);
-        emailText = findViewById(R.id.emailText);
-        passwordText = findViewById(R.id.passwordText);
-        loginButton = findViewById(R.id.loginButton);
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        ImageView top = findViewById(R.id.topImage);
+        ImageView bottom = findViewById(R.id.bottomImage);
+        TextView loginText = findViewById(R.id.loginText);
+        TextView sloganText = findViewById(R.id.sloganText);
+        TextInputLayout emailLayout = findViewById(R.id.emailLayout);
+        TextInputLayout passwordLayout = findViewById(R.id.passwordLayout);
+        EditText emailText = findViewById(R.id.emailText);
+        EditText passwordText = findViewById(R.id.passwordText);
+        Button loginButton = findViewById(R.id.loginButton);
 
         // Animations
         top.animate().translationYBy(2000f).setDuration(1300);
@@ -51,11 +43,12 @@ public class LoginActivity extends AppCompatActivity {
         passwordLayout.animate().translationXBy(2000f).setDuration(1400);
         loginButton.animate().translationXBy(2000f).setDuration(1600);
 
-        pd = new ProgressDialog(this);
+        ProgressDialog pd = new ProgressDialog(this);
         pd.setIndeterminate(true);
         pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         pd.setTitle("Please Wait");
-        pd.setMessage("Logging in...");
+        pd.setMessage("Logging in");
+        pd.setIndeterminate(true);
         pd.setCancelable(false);
 
         loginButton.setOnClickListener(v -> {
