@@ -389,7 +389,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (photoFile != null) {
                     Uri photoURI = FileProvider.getUriForFile(this,
-                            "com.blunderbois.sloe.fileprovider", photoFile);
+                            "com.prasoonsoni.supervisedlearninginonlineeducation.fileprovider", photoFile);
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                     startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
                 }
